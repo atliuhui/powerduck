@@ -1,0 +1,12 @@
+{
+  "extends": "../tsconfig.base.json",
+  "compilerOptions": {
+    "module": "Node16",
+    "moduleResolution": "Node16",
+    "types": ["node", "vscode"],
+    "outDir": "./dist/extension",
+    "rootDir": "./src/extension",
+    "sourceMap": true
+  },
+  "include": ["src/extension/**/*"]
+}

@@ -3,6 +3,9 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
 
+DEVELOPMENT.html
+README.html
+
 # User-specific files
 *.rsuser
 *.suo
@@ -313,7 +316,12 @@ FakesAssemblies/
 
 # Node.js Tools for Visual Studio
 .ntvs_analysis.dat
-node_modules/
+node_modules
+dist
+*.vsix
+*.zip
+.vscode-test
+.DS_Store/
 
 # Visual Studio 6 build log
 *.plg
@@ -420,6 +428,7 @@ FodyWeavers.xsd
 
 # Built Visual Studio Code Extensions
 *.vsix
+*.zip
 
 # Windows Installer files from build outputs
 *.cab

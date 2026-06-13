@@ -1,0 +1,86 @@
+<!-- Workspace HTML template — shared by vscode webview and webapp.
+     Imported via Vite ?raw and injected by mountWorkspace() into a host element. -->
+<div class="app">
+
+  <!-- Main -->
+  <main class="main" role="main" aria-label="PowerDuck workspace">
+
+    <!-- Report canvas -->
+    <section class="workarea" aria-label="Report workspace">
+      <div class="workarea-header">
+        <h1 class="wh-title" id="workareaTitle">Dashboard</h1>
+        <span class="visual-count" id="visualCount" aria-live="polite">0 visuals</span>
+        <span class="spacer"></span>
+        <button type="button" class="wh-btn primary" id="newVisualBtn">New visual</button>
+        <button type="button" class="wh-btn" id="refreshBtn" disabled title="Refresh all visuals">Refresh</button>
+        <button type="button" class="wh-btn" id="clearPageBtn" disabled title="Remove all visuals from this page">Clear</button>
+      </div>
+      <div class="view-host">
+        <div class="view-page active" data-view="report">
+          <div class="report-canvas">
+            <div class="report-page empty" id="reportPage" role="region" aria-label="Visual report canvas"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Visualizations editor -->
+    <aside class="right-panel" aria-label="Visual editor">
+      <section class="panel" aria-labelledby="visualizationsTitle">
+        <div class="panel-title" id="visualizationsTitle">Visualizations</div>
+        <div class="panel-body">
+          <div class="visual-types" id="visualTypes"></div>
+          <div class="dropzones" id="dropzones"></div>
+          <div class="sql-editor" id="sqlEditorBox">
+            <div class="sql-head">
+              <span class="ttl" id="sqlTitle">SQL</span>
+              <span class="badge" id="sqlBadge" hidden>Custom</span>
+              <span class="spacer"></span>
+              <button type="button" class="sql-btn" id="sqlCopyBtn" title="Copy SQL to clipboard" aria-label="Copy SQL"></button>
+              <button type="button" class="sql-btn" id="sqlResetBtn" title="Reset to auto-generated SQL" aria-label="Reset SQL"></button>
+              <button type="button" class="sql-btn" id="sqlApplyBtn" title="Run (Ctrl+Enter)" aria-label="Run SQL"></button>
+            </div>
+            <textarea id="sqlEditor" spellcheck="false" placeholder="Select a visual to inspect and edit its SQL" aria-label="SQL editor"></textarea>
+          </div>
+        </div>
+      </section>
+    </aside>
+
+    <!-- Data panel -->
+    <aside class="left-panel" aria-label="Data fields">
+      <section class="panel" aria-labelledby="dataTitle">
+        <div class="panel-title" id="dataTitle">Data</div>
+        <div class="panel-body">
+          <div class="fields-tree" id="fieldsTree" role="tree" aria-label="Data schema tree">
+            <div class="fields-empty">No data loaded yet</div>
+          </div>
+        </div>
+      </section>
+    </aside>
+
+    <!-- Welcome / loading overlay (Data Wrangler-style) -->
+    <div class="main-overlay" id="welcomeOverlay" role="status" aria-live="polite">
+      <div class="welcome-card" data-state="loading">
+        <div class="welcome-icon" aria-hidden="true">
+          <span id="welcomeIcon"></span>
+        </div>
+        <div class="welcome-title">PowerDuck</div>
+        <div class="welcome-message" id="welcomeMessage">Initializing DuckDB-WASM…</div>
+        <div class="welcome-progress" aria-hidden="true"><div class="welcome-progress-bar"></div></div>
+        <div class="welcome-hint">
+          <!-- tagline:start -->Lightweight, Power BI–inspired data visualizer powered by <strong>DuckDB-WASM</strong> and <strong>Apache ECharts</strong>.<!-- tagline:end -->
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Status bar -->
+  <footer class="statusbar" role="status" aria-live="polite">
+    <span><span class="dot loading" id="statusDot"></span><span id="statusText">Initializing DuckDB-WASM...</span></span>
+    <span class="spacer"></span>
+    <span id="tableInfo"></span>
+    <span id="dbVer">DuckDB-WASM</span>
+  </footer>
+
+</div>

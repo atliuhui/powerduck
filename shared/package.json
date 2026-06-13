@@ -1,0 +1,42 @@
+{
+  "name": "@powerduck/shared",
+  "version": "0.1.1",
+  "description": "Core shared code for PowerDuck (DuckDB utilities, icons, etc.)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/atliuhui/powerduck.git"
+  },
+  "bugs": {
+    "url": "https://github.com/atliuhui/powerduck/issues"
+  },
+  "homepage": "https://github.com/atliuhui/powerduck#readme",
+  "type": "module",
+  "main": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./duck": "./src/duck.ts",
+    "./icons": "./src/icons.ts"
+  },
+  "types": "./src/index.ts",
+  "files": [
+    "src"
+  ],
+  "scripts": {
+    "build": "echo 'shared is source-only, no build needed'",
+    "typecheck": "echo 'typechecked by consumers'"
+  },
+  "dependencies": {
+    "@duckdb/duckdb-wasm": "1.32.0",
+    "apache-arrow": "^17.0.0",
+    "echarts": "6.1.0"
+  },
+  "attributions": [
+    {
+      "name": "@fluentui/react-icons",
+      "source": "https://github.com/microsoft/fluentui-system-icons",
+      "license": "MIT",
+      "usage": "SVG path data inlined into src/icons.ts; no runtime dependency."
+    }
+  ]
+}

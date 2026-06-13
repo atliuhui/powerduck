@@ -1,0 +1,40 @@
+{
+  "name": "powerduck",
+  "version": "0.1.1",
+  "description": "Lightweight, Power BI–inspired data visualizer powered by DuckDB-WASM and Apache ECharts.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/atliuhui/powerduck.git"
+  },
+  "bugs": {
+    "url": "https://github.com/atliuhui/powerduck/issues"
+  },
+  "homepage": "https://github.com/atliuhui/powerduck#readme",
+  "workspaces": [
+    "shared",
+    "vscode",
+    "webapp",
+    "chrome"
+  ],
+  "scripts": {
+    "clean": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\"",
+    "sync:meta": "node -e \"const fs=require('fs');fs.copyFileSync('LICENSE','vscode/LICENSE.txt');fs.copyFileSync('README.md','vscode/README.md');\"",
+    "sync:tagline": "node scripts/sync-tagline.mjs",
+    "check:tagline": "node scripts/sync-tagline.mjs --check",
+    "gen:icons": "node scripts/build-icon.mjs",
+    "prebuild": "npm run gen:icons",
+    "build": "npm run -w shared build && npm run -w vscode build && npm run -w webapp build && npm run -w powerduck-chrome build",
+    "typecheck": "npm run -w shared typecheck && npm run -w vscode typecheck && npm run -w webapp typecheck",
+    "prepackage": "npm run sync:tagline",
+    "package": "npm run build && npm run -w vscode package && npm run -w powerduck-webapp package && npm run -w powerduck-chrome package"
+  },
+  "devDependencies": {
+    "@resvg/resvg-js": "^2.6.2",
+    "@types/node": "^22.10.0",
+    "@typescript/native-preview": "7.0.0-dev.20260421.2",
+    "@vscode/vsce": "^3.2.0",
+    "typescript": "^5.7.0",
+    "vite": "8.0.16"
+  }
+}

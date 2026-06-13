@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "PowerDuck",
+  "version": "0.1.1",
+  "description": "Lightweight, Power BI–inspired data visualizer powered by DuckDB-WASM and Apache ECharts.",
+  "homepage_url": "https://github.com/atliuhui/powerduck",
+  "action": {
+    "default_title": "Open PowerDuck",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png",
+      "48": "icons/icon-48.png",
+      "128": "icons/icon-128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self'"
+  }
+}

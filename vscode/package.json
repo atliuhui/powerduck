@@ -1,0 +1,84 @@
+{
+  "name": "powerduck-vscode",
+  "displayName": "PowerDuck",
+  "description": "Lightweight, Power BI–inspired data visualizer powered by DuckDB-WASM and Apache ECharts.",
+  "version": "0.1.1",
+  "publisher": "atliuhui",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/atliuhui/powerduck.git"
+  },
+  "bugs": {
+    "url": "https://github.com/atliuhui/powerduck/issues"
+  },
+  "homepage": "https://github.com/atliuhui/powerduck#readme",
+  "engines": {
+    "vscode": "^1.95.0"
+  },
+  "categories": [
+    "Data Science",
+    "Visualization",
+    "Other"
+  ],
+  "keywords": [
+    "duckdb",
+    "parquet",
+    "csv",
+    "jsonl",
+    "bi",
+    "visualization",
+    "echarts"
+  ],
+  "main": "./dist/extension/extension.js",
+  "icon": "./assets/icon.png",
+  "activationEvents": [],
+  "contributes": {
+    "commands": [
+      {
+        "command": "powerduck.open",
+        "title": "Open in Data Visualizer (PowerDuck)",
+        "category": "PowerDuck"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "powerduck.open",
+          "when": "resourceExtname == .parquet || resourceExtname == .csv || resourceExtname == .tsv || resourceExtname == .json || resourceExtname == .jsonl || resourceExtname == .ndjson",
+          "group": "navigation@10"
+        }
+      ],
+      "editor/title/context": [
+        {
+          "command": "powerduck.open",
+          "when": "resourceExtname == .parquet || resourceExtname == .csv || resourceExtname == .tsv || resourceExtname == .json || resourceExtname == .jsonl || resourceExtname == .ndjson",
+          "group": "navigation@10"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "powerduck.open",
+          "when": "resourceExtname == .parquet || resourceExtname == .csv || resourceExtname == .tsv || resourceExtname == .json || resourceExtname == .jsonl || resourceExtname == .ndjson",
+          "group": "navigation@10"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "clean": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\"",
+    "build:extension": "tsc -p tsconfig.extension.json",
+    "build:webview": "vite build",
+    "build": "npm run clean && npm run build:extension && npm run build:webview",
+    "watch:extension": "tsc -p tsconfig.extension.json --watch",
+    "watch:webview": "vite build --watch",
+    "typecheck": "tsc -p tsconfig.extension.json --noEmit && tsc -p tsconfig.webview.json",
+    "package": "npm --prefix .. run sync:meta && vsce package --no-dependencies"
+  },
+  "dependencies": {
+    "@powerduck/shared": "*"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.95.0"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "name": "powerduck-webapp",
+  "version": "0.1.1",
+  "private": true,
+  "description": "Web-based data visualizer using PowerDuck core.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/atliuhui/powerduck.git"
+  },
+  "bugs": {
+    "url": "https://github.com/atliuhui/powerduck/issues"
+  },
+  "homepage": "https://github.com/atliuhui/powerduck#readme",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "clean": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\"",
+    "build": "npm run clean && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "package": "npm run build && node scripts/package.mjs"
+  },
+  "dependencies": {
+    "@powerduck/shared": "*"
+  }
+}

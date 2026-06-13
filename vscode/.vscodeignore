@@ -1,0 +1,13 @@
+# Sources and build configs (the published extension only needs dist/)
+src/**
+tsconfig*.json
+vite.config.mts
+**/*.ts
+**/*.map
+
+# Workspace metadata
+.gitignore
+node_modules/**
+
+# Build artifacts of this package itself
+*.vsix

@@ -1,0 +1,287 @@
+/* ===== Explorer (resource picker) — webapp only ===== */
+
+:root {
+  --explorer-pb-yellow: var(--pb-yellow, #f2c811);
+  --explorer-pb-dark: var(--pb-dark, #252423);
+  --explorer-bg: var(--bg, #f3f2f1);
+  --explorer-surface: var(--surface, #ffffff);
+  --explorer-surface-2: var(--surface-2, #faf9f8);
+  --explorer-surface-3: var(--surface-3, #f3f2f1);
+  --explorer-border: var(--border, #e1dfdd);
+  --explorer-border-strong: var(--border-strong, #c8c6c4);
+  --explorer-text: var(--text, #252423);
+  --explorer-text-2: var(--text-2, #605e5c);
+  --explorer-text-dim: var(--text-dim, #8a8886);
+  --explorer-accent: var(--accent-2, #8a6a00);
+  --explorer-accent-bg: var(--accent-bg, #fff8d6);
+  --explorer-drop-bg: var(--drop-bg, #fff4ce);
+  --explorer-drop-border: var(--drop-border, #ffb900);
+  --explorer-err: var(--err, #a4262c);
+}
+
+.explorer {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--explorer-bg);
+  color: var(--explorer-text);
+  font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: 13px;
+  z-index: 1000;
+  overflow: auto;
+  padding: 24px;
+}
+
+.explorer-card {
+  width: 100%;
+  max-width: 720px;
+  background: var(--explorer-surface);
+  border: 1px solid var(--explorer-border);
+  border-radius: 8px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.explorer-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 20px;
+  background: var(--explorer-pb-yellow);
+  color: var(--explorer-pb-dark);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+.explorer-body {
+  padding: 24px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.explorer-logo {
+  width: 28px; height: 28px;
+  background: var(--explorer-pb-dark);
+  color: var(--explorer-pb-yellow);
+  border-radius: 4px;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 800; font-size: 16px; line-height: 1;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  flex-shrink: 0;
+}
+.explorer-title {
+  font-size: 16px;
+  font-weight: 600;
+}
+.explorer-sub {
+  font-size: 12px;
+  color: var(--explorer-pb-dark);
+  opacity: 0.75;
+  margin-left: auto;
+}
+
+.explorer-dropzone {
+  border: 2px dashed var(--explorer-border-strong);
+  border-radius: 6px;
+  background: var(--explorer-surface-2);
+  padding: 6px 16px;
+  min-height: 64px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+.explorer-dropzone:hover,
+.explorer-dropzone.over {
+  background: var(--explorer-drop-bg);
+  border-color: var(--explorer-drop-border);
+}
+.explorer-dropzone-title {
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+.explorer-dropzone-hint {
+  font-size: 12px;
+  color: var(--explorer-text-2);
+}
+
+.explorer-url {
+  display: flex;
+  gap: 8px;
+}
+.explorer-url input {
+  flex: 1;
+  min-width: 0;
+  padding: 7px 10px;
+  border: 1px solid var(--explorer-border-strong);
+  border-radius: 4px;
+  background: var(--explorer-surface);
+  color: var(--explorer-text);
+  font-size: 13px;
+  outline: none;
+}
+.explorer-url input:focus {
+  border-color: var(--explorer-accent);
+}
+.explorer-btn {
+  padding: 7px 16px;
+  border: 1px solid var(--explorer-border-strong);
+  border-radius: 4px;
+  background: #ebeaea;
+  color: var(--explorer-text);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.explorer-btn:hover {
+  background: var(--explorer-surface);
+  border-color: var(--explorer-accent);
+}
+.explorer-btn.primary {
+  background: var(--explorer-pb-dark);
+  color: #ffffff;
+  border-color: var(--explorer-pb-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.explorer-btn.primary:hover {
+  background: #3b3a39;
+}
+
+.explorer-history {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.explorer-history-head {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--explorer-text-2);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+.explorer-history-head .count {
+  margin-left: 6px;
+  font-weight: 400;
+  color: var(--explorer-text-dim);
+}
+.explorer-history-head .clear-all {
+  margin-left: auto;
+  font-size: 11px;
+  color: var(--explorer-text-2);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-transform: none;
+  letter-spacing: 0;
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+.explorer-history-head .clear-all:hover {
+  background: var(--explorer-surface-3);
+  color: var(--explorer-err);
+}
+.explorer-history-list {
+  max-height: 240px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  border: 1px solid var(--explorer-border);
+  border-radius: 4px;
+}
+.explorer-history-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  user-select: none;
+  color: var(--explorer-text-2);
+}
+.explorer-history-item:hover {
+  background: var(--explorer-accent-bg);
+  color: var(--explorer-accent);
+  border-color: var(--explorer-border);
+}
+.explorer-history-item .type {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  color: var(--explorer-text-2);
+  flex-shrink: 0;
+}
+.explorer-history-item .type svg { display: block; }
+.explorer-history-item .name {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.explorer-history-item .meta {
+  font-size: 11px;
+  color: var(--explorer-text-dim);
+  flex-shrink: 0;
+}
+.explorer-history-item .del {
+  opacity: 0;
+  background: transparent;
+  border: none;
+  color: var(--explorer-text-dim);
+  cursor: pointer;
+  padding: 2px;
+  border-radius: 3px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+.explorer-history-item .del svg { display: block; pointer-events: none; }
+.explorer-history-item:hover .del {
+  opacity: 1;
+}
+.explorer-history-item .del:hover {
+  background: var(--explorer-surface);
+  color: var(--explorer-err);
+}
+
+.explorer-history-empty {
+  padding: 16px;
+  text-align: center;
+  color: var(--explorer-text-dim);
+  font-size: 12px;
+}
+
+.explorer-error {
+  padding: 8px 12px;
+  border: 1px solid var(--explorer-err);
+  border-radius: 4px;
+  background: rgba(164, 38, 44, 0.05);
+  color: var(--explorer-err);
+  font-size: 12px;
+}
+.explorer-error:empty {
+  display: none;
+}
+
+.explorer-loading {
+  font-size: 12px;
+  color: var(--explorer-text-2);
+  text-align: center;
+  padding: 8px;
+}
+.explorer-loading:empty {
+  display: none;
+}
