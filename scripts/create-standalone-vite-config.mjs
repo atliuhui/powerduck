@@ -1,5 +1,9 @@
 import { resolve } from 'node:path';
 
+/**
+ * @param {string} packageDir
+ * @returns {import('vite').UserConfig}
+ */
 export function createStandaloneViteConfig(packageDir) {
   return {
     root: resolve(packageDir, 'src'),

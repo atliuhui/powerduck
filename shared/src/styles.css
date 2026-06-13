@@ -71,6 +71,7 @@ svg.ico { display: inline-block; vertical-align: -2px; flex-shrink: 0; }
   position: absolute;
   inset: 0;
   background: color-mix(in srgb, var(--vscode-editor-background, #f3f2f1) 55%, transparent);
+  -webkit-backdrop-filter: blur(1px);
   backdrop-filter: blur(1px);
   z-index: 50;
   display: none;
@@ -767,6 +768,7 @@ body.vscode-high-contrast .field-chip .agg.filter.pending {
   cursor: pointer;
   text-align: center;
   white-space: nowrap;
+  -webkit-user-select: none;
   user-select: none;
 }
 .webapp-loader-btn:hover {
